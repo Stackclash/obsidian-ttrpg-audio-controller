@@ -1,3 +1,21 @@
+export interface AudioFolderSettings {
+  folderPath: string
+  volume: number
+  loop: boolean
+}
+
+export interface PlaylistSettings {
+  name: string
+  audioPaths: string[]
+}
+
+export interface SceneSettings {
+  name: string
+  audioPaths: string[]
+}
+
 export interface TtrpgAudioControllerSettings {
-  mySetting: string
+  audioFolderSettings: AudioFolderSettings[]
+  playlists: PlaylistSettings[]
+  scenes: SceneSettings[]
 }
