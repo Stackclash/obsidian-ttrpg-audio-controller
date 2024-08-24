@@ -1,0 +1,61 @@
+name: Bug Report
+description: File a bug report.
+title: "[Bug]: "
+labels: ["bug"]
+assignees:
+  - Stackclash
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: A clear and consise description of what the bug is.
+      placeholder: Describe the bug you encountered.
+    validations:
+      required: false
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction Steps
+      description: Lay out the steps to reproduce the bug.
+      placeholder: |
+        1. Go to '...'
+        2. Click on '....'
+        3. Scroll down to '....'
+    validations:
+      required: true
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Expected Behavior
+      description: A clear and concise description of what you expected to happen.
+      placeholder: Describe what you expected to happen.
+    validations:
+      required: true
+  - type: dropdown
+    id: plugin-version
+    attributes:
+      label: Version
+      description: What version of the plugin are you using?
+      options:
+        - 0.1.0
+      default: 0
+    validations:
+      required: true
+  - type: dropdown
+    id: obsidian-version
+    attributes:
+      label: What version of Obsidian are you using?
+      options:
+        - 1.6.7 (Latest)
+        - 1.6.5
+        - 1.6.3
+        - 1.6
+        - 1.5.12
+      default: 0
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant log output
+      description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
+      render: shell
