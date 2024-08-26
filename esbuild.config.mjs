@@ -11,6 +11,7 @@ if you want to view the source, please visit the github repository of this plugi
 `
 
 const prod = process.argv[2] === 'production'
+const testVaultPluginPath = './test-vault/.obsidian/plugins/obsidian-ttrpg-audio-controller'
 
 const context = await esbuild.context({
   banner: {
@@ -39,7 +40,7 @@ const context = await esbuild.context({
   logLevel: 'info',
   sourcemap: prod ? false : 'inline',
   treeShaking: true,
-  outdir: prod ? './' : './test-vault/.obsidian/plugins/obsidian-ttrpg-audio-controller',
+  outdir: prod ? './' : testVaultPluginPath,
   minify: prod,
 })
 
@@ -47,9 +48,6 @@ if (prod) {
   await context.rebuild()
   process.exit(0)
 } else {
-  fs.writeFileSync(
-    './test-vault/.obsidian/plugins/obsidian-ttrpg-audio-controller/manifest.json',
-    JSON.stringify(manifest, null, 2),
-  )
+  fs.writeFileSync(testVaultPluginPath + '/manifest.json', JSON.stringify(manifest, null, 2))
   await context.watch()
 }
