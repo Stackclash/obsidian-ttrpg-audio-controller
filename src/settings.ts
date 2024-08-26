@@ -45,12 +45,15 @@ export class TtrpgAudioControllerSettingTab extends PluginSettingTab {
               this.plugin.saveSettings()
             })
         })
-        .addButton((button) => {
-          button.setButtonText('Remove').onClick(() => {
-            this.plugin.settings.audioFolderSettings.splice(index, 1)
-            this.plugin.saveSettings()
-            this.display()
-          })
+        .addExtraButton((button) => {
+          button
+            .setIcon('cross')
+            .setTooltip('Remove')
+            .onClick(() => {
+              this.plugin.settings.audioFolderSettings.splice(index, 1)
+              this.plugin.saveSettings()
+              this.display()
+            })
         })
       new Setting(this.containerEl)
         .addSlider((slider) => {
@@ -108,38 +111,47 @@ export class TtrpgAudioControllerSettingTab extends PluginSettingTab {
               this.plugin.saveSettings()
             })
         })
-        .addButton((button) => {
-          button.setButtonText('Add folder path').onClick(() => {
-            this.plugin.settings.playlists[index].audioPaths.push('')
-            this.plugin.saveSettings()
-            this.display()
-          })
+        .addExtraButton((button) => {
+          button
+            .setIcon('plus')
+            .setTooltip('Add Audio File')
+            .onClick(() => {
+              this.plugin.settings.playlists[index].audioPaths.push('')
+              this.plugin.saveSettings()
+              this.display()
+            })
         })
-        .addButton((button) => {
-          button.setButtonText('Remove').onClick(() => {
-            this.plugin.settings.playlists.splice(index, 1)
-            this.plugin.saveSettings()
-            this.display()
-          })
+        .addExtraButton((button) => {
+          button
+            .setIcon('cross')
+            .setTooltip('Remove')
+            .onClick(() => {
+              this.plugin.settings.playlists.splice(index, 1)
+              this.plugin.saveSettings()
+              this.display()
+            })
         })
 
       playlist.audioPaths.forEach((audioPath, audioIndex) => {
         new Setting(this.containerEl)
           .addText((text) => {
             text
-              .setPlaceholder('Enter folder path')
+              .setPlaceholder('Enter Audio File Path')
               .setValue(audioPath)
               .onChange((value) => {
                 this.plugin.settings.playlists[index].audioPaths[audioIndex] = value
                 this.plugin.saveSettings()
               })
           })
-          .addButton((button) => {
-            button.setButtonText('Remove').onClick(() => {
-              this.plugin.settings.playlists[index].audioPaths.splice(audioIndex, 1)
-              this.plugin.saveSettings()
-              this.display()
-            })
+          .addExtraButton((button) => {
+            button
+              .setIcon('cross')
+              .setTooltip('Remove')
+              .onClick(() => {
+                this.plugin.settings.playlists[index].audioPaths.splice(audioIndex, 1)
+                this.plugin.saveSettings()
+                this.display()
+              })
           })
       })
     })
@@ -177,38 +189,47 @@ export class TtrpgAudioControllerSettingTab extends PluginSettingTab {
               this.plugin.saveSettings()
             })
         })
-        .addButton((button) => {
-          button.setButtonText('Add audio').onClick(() => {
-            this.plugin.settings.scenes[index].audioPaths.push('')
-            this.plugin.saveSettings()
-            this.display()
-          })
+        .addExtraButton((button) => {
+          button
+            .setIcon('plus')
+            .setTooltip('Add Audio File')
+            .onClick(() => {
+              this.plugin.settings.scenes[index].audioPaths.push('')
+              this.plugin.saveSettings()
+              this.display()
+            })
         })
-        .addButton((button) => {
-          button.setButtonText('Remove').onClick(() => {
-            this.plugin.settings.scenes.splice(index, 1)
-            this.plugin.saveSettings()
-            this.display()
-          })
+        .addExtraButton((button) => {
+          button
+            .setIcon('cross')
+            .setTooltip('Remove')
+            .onClick(() => {
+              this.plugin.settings.scenes.splice(index, 1)
+              this.plugin.saveSettings()
+              this.display()
+            })
         })
 
       scene.audioPaths.forEach((audioPath, audioIndex) => {
         new Setting(this.containerEl)
           .addText((text) => {
             text
-              .setPlaceholder('Enter folder path')
+              .setPlaceholder('Enter Audio File Path')
               .setValue(audioPath)
               .onChange((value) => {
                 this.plugin.settings.scenes[index].audioPaths[audioIndex] = value
                 this.plugin.saveSettings()
               })
           })
-          .addButton((button) => {
-            button.setButtonText('Remove').onClick(() => {
-              this.plugin.settings.scenes[index].audioPaths.splice(audioIndex, 1)
-              this.plugin.saveSettings()
-              this.display()
-            })
+          .addExtraButton((button) => {
+            button
+              .setIcon('cross')
+              .setTooltip('Remove')
+              .onClick(() => {
+                this.plugin.settings.scenes[index].audioPaths.splice(audioIndex, 1)
+                this.plugin.saveSettings()
+                this.display()
+              })
           })
       })
     })
