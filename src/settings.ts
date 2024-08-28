@@ -1,6 +1,7 @@
 import { App, PluginSettingTab, Setting } from 'obsidian'
 import TtrpgAudioControllerPlugin from './main'
 import { TtrpgAudioControllerSettings } from './types'
+import PlaylistModal from './modals/PlaylistModal'
 
 export const DEFAULT_SETTINGS: TtrpgAudioControllerSettings = {
   audioFolderSettings: [],
@@ -11,9 +12,12 @@ export const DEFAULT_SETTINGS: TtrpgAudioControllerSettings = {
 export class TtrpgAudioControllerSettingTab extends PluginSettingTab {
   plugin: TtrpgAudioControllerPlugin
 
+  playlistSettingModal: PlaylistModal
+
   constructor(app: App, plugin: TtrpgAudioControllerPlugin) {
     super(app, plugin)
     this.plugin = plugin
+    this.playlistSettingModal = new PlaylistModal(this.app)
   }
 
   display(): void {
@@ -77,8 +81,9 @@ export class TtrpgAudioControllerSettingTab extends PluginSettingTab {
         })
     })
 
-    new Setting(this.containerEl).addButton((cb) => {
-      cb.setButtonText('Add new audio folder')
+    new Setting(this.containerEl).addButton((button) => {
+      button
+        .setButtonText('Add new audio folder')
         .setCta()
         .onClick(() => {
           this.plugin.settings.audioFolderSettings.push({
@@ -93,6 +98,11 @@ export class TtrpgAudioControllerSettingTab extends PluginSettingTab {
   }
 
   addPlaylistSettings(): void {
+    this.playlistSettingModal.events.on('playlist-modal-close', (data) => {
+      this.plugin.settings.playlists[data.index] = data.settings
+      this.plugin.saveSettings()
+    })
+
     new Setting(this.containerEl).setName('Playlists').setHeading()
 
     const desc = document.createDocumentFragment()
@@ -113,12 +123,11 @@ export class TtrpgAudioControllerSettingTab extends PluginSettingTab {
         })
         .addExtraButton((button) => {
           button
-            .setIcon('plus')
-            .setTooltip('Add Audio File')
+            .setIcon('settings')
+            .setTooltip('Playlist Settings')
             .onClick(() => {
-              this.plugin.settings.playlists[index].audioPaths.push('')
-              this.plugin.saveSettings()
-              this.display()
+              this.playlistSettingModal.loadSettings(playlist, index)
+              this.playlistSettingModal.open()
             })
         })
         .addExtraButton((button) => {
@@ -131,37 +140,17 @@ export class TtrpgAudioControllerSettingTab extends PluginSettingTab {
               this.display()
             })
         })
-
-      playlist.audioPaths.forEach((audioPath, audioIndex) => {
-        new Setting(this.containerEl)
-          .addText((text) => {
-            text
-              .setPlaceholder('Enter Audio File Path')
-              .setValue(audioPath)
-              .onChange((value) => {
-                this.plugin.settings.playlists[index].audioPaths[audioIndex] = value
-                this.plugin.saveSettings()
-              })
-          })
-          .addExtraButton((button) => {
-            button
-              .setIcon('cross')
-              .setTooltip('Remove')
-              .onClick(() => {
-                this.plugin.settings.playlists[index].audioPaths.splice(audioIndex, 1)
-                this.plugin.saveSettings()
-                this.display()
-              })
-          })
-      })
     })
 
-    new Setting(this.containerEl).addButton((cb) => {
-      cb.setButtonText('Add new playlist')
+    new Setting(this.containerEl).addButton((button) => {
+      button
+        .setButtonText('Add new playlist')
         .setCta()
         .onClick(() => {
           this.plugin.settings.playlists.push({
             name: '',
+            volume: 50,
+            loop: false,
             audioPaths: [],
           })
           this.plugin.saveSettings()
@@ -191,13 +180,9 @@ export class TtrpgAudioControllerSettingTab extends PluginSettingTab {
         })
         .addExtraButton((button) => {
           button
-            .setIcon('plus')
-            .setTooltip('Add Audio File')
-            .onClick(() => {
-              this.plugin.settings.scenes[index].audioPaths.push('')
-              this.plugin.saveSettings()
-              this.display()
-            })
+            .setIcon('settings')
+            .setTooltip('Playlist Settings')
+            .onClick(() => {})
         })
         .addExtraButton((button) => {
           button
@@ -209,33 +194,11 @@ export class TtrpgAudioControllerSettingTab extends PluginSettingTab {
               this.display()
             })
         })
-
-      scene.audioPaths.forEach((audioPath, audioIndex) => {
-        new Setting(this.containerEl)
-          .addText((text) => {
-            text
-              .setPlaceholder('Enter Audio File Path')
-              .setValue(audioPath)
-              .onChange((value) => {
-                this.plugin.settings.scenes[index].audioPaths[audioIndex] = value
-                this.plugin.saveSettings()
-              })
-          })
-          .addExtraButton((button) => {
-            button
-              .setIcon('cross')
-              .setTooltip('Remove')
-              .onClick(() => {
-                this.plugin.settings.scenes[index].audioPaths.splice(audioIndex, 1)
-                this.plugin.saveSettings()
-                this.display()
-              })
-          })
-      })
     })
 
-    new Setting(this.containerEl).addButton((cb) => {
-      cb.setButtonText('Add new scene')
+    new Setting(this.containerEl).addButton((button) => {
+      button
+        .setButtonText('Add new scene')
         .setCta()
         .onClick(() => {
           this.plugin.settings.scenes.push({

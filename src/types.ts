@@ -6,6 +6,8 @@ export interface AudioFolderSettings {
 
 export interface PlaylistSettings {
   name: string
+  volume: number
+  loop: boolean
   audioPaths: string[]
 }
 

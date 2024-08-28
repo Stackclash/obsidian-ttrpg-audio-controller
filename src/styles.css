@@ -1,0 +1,11 @@
+.setting-input-full-width .setting-item-info {
+    width: 0px;
+}
+
+.setting-input-full-width .setting-item-control {
+    width: 100%;
+}
+
+.setting-input-full-width .setting-item-control .search-input-container {
+    width: 100%;
+}
