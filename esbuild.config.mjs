@@ -1,6 +1,7 @@
 import esbuild from 'esbuild'
 import process from 'process'
 import builtins from 'builtin-modules'
+import { sassPlugin } from 'esbuild-sass-plugin'
 import fs from 'fs'
 import manifest from './manifest.json' assert { type: 'json' }
 
@@ -17,7 +18,7 @@ const context = await esbuild.context({
   banner: {
     js: banner,
   },
-  entryPoints: ['src/main.ts', 'src/styles.css'],
+  entryPoints: ['src/main.ts', 'src/styles.scss'],
   bundle: true,
   external: [
     'obsidian',
@@ -35,6 +36,7 @@ const context = await esbuild.context({
     '@lezer/lr',
     ...builtins,
   ],
+  plugins: [sassPlugin()],
   format: 'cjs',
   target: 'es2018',
   logLevel: 'info',
