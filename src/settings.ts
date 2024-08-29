@@ -2,6 +2,7 @@ import { App, PluginSettingTab, Setting } from 'obsidian'
 import TtrpgAudioControllerPlugin from './main'
 import { TtrpgAudioControllerSettings } from './types'
 import PlaylistModal from './modals/PlaylistModal'
+import SceneModal from './modals/SceneModal'
 
 export const DEFAULT_SETTINGS: TtrpgAudioControllerSettings = {
   audioFolderSettings: [],
@@ -14,10 +15,13 @@ export class TtrpgAudioControllerSettingTab extends PluginSettingTab {
 
   playlistSettingModal: PlaylistModal
 
+  scenesSettingModal: SceneModal
+
   constructor(app: App, plugin: TtrpgAudioControllerPlugin) {
     super(app, plugin)
     this.plugin = plugin
     this.playlistSettingModal = new PlaylistModal(this.app)
+    this.scenesSettingModal = new SceneModal(this.app)
   }
 
   display(): void {
@@ -182,7 +186,10 @@ export class TtrpgAudioControllerSettingTab extends PluginSettingTab {
           button
             .setIcon('settings')
             .setTooltip('Playlist Settings')
-            .onClick(() => {})
+            .onClick(() => {
+              this.scenesSettingModal.loadSettings(scene, index)
+              this.scenesSettingModal.open()
+            })
         })
         .addExtraButton((button) => {
           button
@@ -203,7 +210,7 @@ export class TtrpgAudioControllerSettingTab extends PluginSettingTab {
         .onClick(() => {
           this.plugin.settings.scenes.push({
             name: '',
-            audioPaths: [],
+            audioSettings: [],
           })
           this.plugin.saveSettings()
           this.display()

@@ -11,9 +11,14 @@ export interface PlaylistSettings {
   audioPaths: string[]
 }
 
+interface SceneAudioSettings {
+  audioPath: string
+  volume: number
+}
+
 export interface SceneSettings {
   name: string
-  audioPaths: string[]
+  audioSettings: SceneAudioSettings[]
 }
 
 export interface TtrpgAudioControllerSettings {

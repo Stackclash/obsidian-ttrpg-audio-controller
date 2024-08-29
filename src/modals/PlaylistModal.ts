@@ -5,7 +5,7 @@ import { AudioFileSuggester } from 'src/suggesters/AudioFileSuggester'
 export default class PlaylistModal extends Modal {
   settings: PlaylistSettings
   events: Events
-  index: number
+  settingIndex: number
 
   constructor(app: App) {
     super(app)
@@ -20,12 +20,15 @@ export default class PlaylistModal extends Modal {
   }
 
   onClose(): void {
-    this.events.trigger('playlist-modal-close', { settings: this.settings, index: this.index })
+    this.events.trigger('playlist-modal-close', {
+      settings: this.settings,
+      index: this.settingIndex,
+    })
   }
 
   loadSettings(settings: PlaylistSettings, index: number): void {
     this.settings = settings
-    this.index = index
+    this.settingIndex = index
   }
 
   reload(): void {
@@ -55,6 +58,7 @@ export default class PlaylistModal extends Modal {
 
     this.settings.audioPaths.forEach((value, index) => {
       const setting = new Setting(contentEl)
+        .setName(`${index + 1}.`)
         .addSearch((search) => {
           new AudioFileSuggester(this.app, search.inputEl)
           search
@@ -91,7 +95,7 @@ export default class PlaylistModal extends Modal {
               this.reload()
             })
         })
-      setting.settingEl.addClass('setting-input-full-width')
+      setting.settingEl.addClass('setting-input-width-80')
     })
     new Setting(contentEl).addButton((button) => {
       button.setButtonText('Add Audio File').onClick(() => {
