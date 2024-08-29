@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.0](https://github.com/Stackclash/obsidian-ttrpg-audio-controller/compare/0.1.0...0.1.0) (2024-08-29)
+
+
+### Features
+
+* setting up settings tab ([#3](https://github.com/Stackclash/obsidian-ttrpg-audio-controller/issues/3)) ([a136cd6](https://github.com/Stackclash/obsidian-ttrpg-audio-controller/commit/a136cd6871c8e48d4dc52561aa54ed79903595ad))
+
 ## 0.1.0 (2024-08-24)
 
 
