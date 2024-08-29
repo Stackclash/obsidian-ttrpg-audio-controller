@@ -13,6 +13,14 @@ node_modules
 main.js
 styles.css
 
+!src/styles.css
+
+# include hot-reload main.js file
+!test-vault/.obsidian/plugins/hot-reload/main.js
+
+# exclude manifest.json in test-vault
+test-vault/.obsidian/plugins/obsidian-ttrpg-audio-controller/manifest.json
+
 # Exclude sourcemaps
 *.map
 
