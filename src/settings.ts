@@ -32,7 +32,9 @@ export class TtrpgAudioControllerSettingTab extends PluginSettingTab {
     new Setting(this.containerEl).setName('Audio Folders').setHeading()
 
     const desc = document.createDocumentFragment()
-    desc.append('Audio folders with their own settings when playing individual audio files')
+    desc.append(
+      'Audio folders with their own settings. A Audio Folder settings apply when playing an individual audio file from that folder. You can adjust the volume and whether to loop the audio.',
+    )
 
     new Setting(this.containerEl).setDesc(desc)
 
@@ -60,26 +62,26 @@ export class TtrpgAudioControllerSettingTab extends PluginSettingTab {
         })
       setting.settingEl.addClass('setting-search-input-width-100')
 
-      new Setting(this.containerEl)
-        .addSlider((slider) => {
-          slider
-            .setLimits(0, 100, 1)
-            .setValue(audioFolderSetting.volume)
-            .setDynamicTooltip()
-            .onChange((value) => {
-              this.plugin.settings.audioFolders[index].volume = value
-              this.plugin.saveSettings()
-            })
-        })
-        .addToggle((toggle) => {
-          toggle
-            .setValue(audioFolderSetting.loop)
-            .setTooltip('Loop audio')
-            .onChange((value) => {
-              this.plugin.settings.audioFolders[index].loop = value
-              this.plugin.saveSettings()
-            })
-        })
+      new Setting(this.containerEl).setName('Volume').addSlider((slider) => {
+        slider
+          .setLimits(0, 100, 1)
+          .setValue(audioFolderSetting.volume)
+          .setDynamicTooltip()
+          .onChange((value) => {
+            this.plugin.settings.audioFolders[index].volume = value
+            this.plugin.saveSettings()
+          })
+      })
+
+      new Setting(this.containerEl).setName('Loop').addToggle((toggle) => {
+        toggle
+          .setValue(audioFolderSetting.loop)
+          .setTooltip('Loop audio')
+          .onChange((value) => {
+            this.plugin.settings.audioFolders[index].loop = value
+            this.plugin.saveSettings()
+          })
+      })
     })
 
     new Setting(this.containerEl).addButton((button) => {
@@ -107,7 +109,9 @@ export class TtrpgAudioControllerSettingTab extends PluginSettingTab {
     new Setting(this.containerEl).setName('Playlists').setHeading()
 
     const desc = document.createDocumentFragment()
-    desc.append('Playlists of audio files to play in order')
+    desc.append(
+      'Playlists of audio files to play in order. You can adjust the volume and whether to loop the playlist.',
+    )
 
     new Setting(this.containerEl).setDesc(desc)
 
@@ -169,7 +173,9 @@ export class TtrpgAudioControllerSettingTab extends PluginSettingTab {
     new Setting(this.containerEl).setName('Scenes').setHeading()
 
     const desc = document.createDocumentFragment()
-    desc.append('Scenes you can reference in your notes')
+    desc.append(
+      'Scenes are groups of audio files to play together. Each scene can have multiple audio files with their own volume settings. Use scenes to create ambiance for different locations or situations.',
+    )
 
     new Setting(this.containerEl).setDesc(desc)
 
