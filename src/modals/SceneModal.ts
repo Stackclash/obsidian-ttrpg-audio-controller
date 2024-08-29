@@ -46,7 +46,7 @@ export default class PlaylistModal extends Modal {
 
     new Setting(contentEl).setDesc(desc)
 
-    new Setting(contentEl).addButton((button) => {
+    new Setting(contentEl).addButton(button => {
       button
         .setIcon('play')
         .setTooltip('Test Scene')
@@ -60,25 +60,25 @@ export default class PlaylistModal extends Modal {
 
     this.settings.audioSettings.forEach((audioSetting, index) => {
       const setting = new Setting(contentEl)
-        .addSearch((search) => {
+        .addSearch(search => {
           new AudioFileSuggester(this.app, search.inputEl)
           search
             .setPlaceholder('Enter Audio File Path')
             .setValue(this.settings.audioSettings[index].audioPath)
-            .onChange((value) => {
+            .onChange(value => {
               this.settings.audioSettings[index].audioPath = value
             })
         })
-        .addSlider((slider) => {
+        .addSlider(slider => {
           slider
             .setLimits(0, 100, 1)
             .setDynamicTooltip()
             .setValue(audioSetting.volume)
-            .onChange((value) => {
+            .onChange(value => {
               this.settings.audioSettings[index].volume = value
             })
         })
-        .addExtraButton((button) => {
+        .addExtraButton(button => {
           button
             .setIcon('cross')
             .setTooltip('Remove')
@@ -91,7 +91,7 @@ export default class PlaylistModal extends Modal {
       setting.settingEl.addClass('setting-search-input-width-100')
     })
 
-    new Setting(contentEl).addButton((button) => {
+    new Setting(contentEl).addButton(button => {
       button.setButtonText('Add Audio File').onClick(() => {
         this.settings.audioSettings.push({
           audioPath: '',
