@@ -1,6 +1,7 @@
 import { Plugin } from 'obsidian'
 import { TtrpgAudioControllerSettings } from './types'
-import { DEFAULT_SETTINGS, TtrpgAudioControllerSettingTab } from './settings'
+import { TtrpgAudioControllerSettingTab } from './settings'
+import { DEFAULT_SETTINGS } from './constants'
 
 export default class TtrpgAudioControllerPlugin extends Plugin {
   settings: TtrpgAudioControllerSettings

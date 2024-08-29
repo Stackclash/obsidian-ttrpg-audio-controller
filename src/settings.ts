@@ -1,14 +1,7 @@
 import { App, PluginSettingTab, Setting } from 'obsidian'
 import TtrpgAudioControllerPlugin from './main'
-import { TtrpgAudioControllerSettings } from './types'
 import PlaylistModal from './modals/PlaylistModal'
 import SceneModal from './modals/SceneModal'
-
-export const DEFAULT_SETTINGS: TtrpgAudioControllerSettings = {
-  audioFolderSettings: [],
-  playlists: [],
-  scenes: [],
-}
 
 export class TtrpgAudioControllerSettingTab extends PluginSettingTab {
   plugin: TtrpgAudioControllerPlugin

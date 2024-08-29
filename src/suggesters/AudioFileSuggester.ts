@@ -1,6 +1,7 @@
 // Credits go to Liam's Periodic Notes Plugin: https://github.com/liamcain/obsidian-periodic-notes
 
 import { AbstractInputSuggest, App, TAbstractFile, TFile } from 'obsidian'
+import { ALLOWED_FILE_EXTENSIONS } from 'src/constants'
 
 export class AudioFileSuggester extends AbstractInputSuggest<TFile> {
   inputEl: HTMLInputElement
@@ -18,7 +19,7 @@ export class AudioFileSuggester extends AbstractInputSuggest<TFile> {
     abstractFiles.forEach((file: TAbstractFile) => {
       if (
         file instanceof TFile &&
-        ['mp3'].includes(file.extension) &&
+        ALLOWED_FILE_EXTENSIONS.includes(file.extension) &&
         file.path.toLowerCase().contains(lowerCaseInputStr)
       ) {
         files.push(file)
