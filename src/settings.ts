@@ -2,6 +2,7 @@ import { App, PluginSettingTab, Setting } from 'obsidian'
 import TtrpgAudioControllerPlugin from './main'
 import PlaylistModal from './modals/PlaylistModal'
 import SceneModal from './modals/SceneModal'
+import { AudioFolderSuggester } from './suggesters/AudioFolderSuggester'
 
 export class TtrpgAudioControllerSettingTab extends PluginSettingTab {
   plugin: TtrpgAudioControllerPlugin
@@ -35,14 +36,15 @@ export class TtrpgAudioControllerSettingTab extends PluginSettingTab {
 
     new Setting(this.containerEl).setDesc(desc)
 
-    this.plugin.settings.audioFolderSettings.forEach((audioFolderSetting, index) => {
-      new Setting(this.containerEl)
-        .addText((text) => {
-          text
+    this.plugin.settings.audioFolders.forEach((audioFolderSetting, index) => {
+      const setting = new Setting(this.containerEl)
+        .addSearch((search) => {
+          new AudioFolderSuggester(this.app, search.inputEl)
+          search
             .setPlaceholder('Enter folder path')
             .setValue(audioFolderSetting.folderPath)
             .onChange((value) => {
-              this.plugin.settings.audioFolderSettings[index].folderPath = value
+              this.plugin.settings.audioFolders[index].folderPath = value
               this.plugin.saveSettings()
             })
         })
@@ -51,11 +53,13 @@ export class TtrpgAudioControllerSettingTab extends PluginSettingTab {
             .setIcon('cross')
             .setTooltip('Remove')
             .onClick(() => {
-              this.plugin.settings.audioFolderSettings.splice(index, 1)
+              this.plugin.settings.audioFolders.splice(index, 1)
               this.plugin.saveSettings()
               this.display()
             })
         })
+      setting.settingEl.addClass('setting-search-input-width-100')
+
       new Setting(this.containerEl)
         .addSlider((slider) => {
           slider
@@ -63,7 +67,7 @@ export class TtrpgAudioControllerSettingTab extends PluginSettingTab {
             .setValue(audioFolderSetting.volume)
             .setDynamicTooltip()
             .onChange((value) => {
-              this.plugin.settings.audioFolderSettings[index].volume = value
+              this.plugin.settings.audioFolders[index].volume = value
               this.plugin.saveSettings()
             })
         })
@@ -72,7 +76,7 @@ export class TtrpgAudioControllerSettingTab extends PluginSettingTab {
             .setValue(audioFolderSetting.loop)
             .setTooltip('Loop audio')
             .onChange((value) => {
-              this.plugin.settings.audioFolderSettings[index].loop = value
+              this.plugin.settings.audioFolders[index].loop = value
               this.plugin.saveSettings()
             })
         })
@@ -83,7 +87,7 @@ export class TtrpgAudioControllerSettingTab extends PluginSettingTab {
         .setButtonText('Add new audio folder')
         .setCta()
         .onClick(() => {
-          this.plugin.settings.audioFolderSettings.push({
+          this.plugin.settings.audioFolders.push({
             folderPath: '',
             volume: 100,
             loop: false,

@@ -88,7 +88,7 @@ export default class PlaylistModal extends Modal {
             })
         })
 
-      setting.settingEl.addClass('setting-input-width-100')
+      setting.settingEl.addClass('setting-search-input-width-100')
     })
 
     new Setting(contentEl).addButton((button) => {

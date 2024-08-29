@@ -95,7 +95,7 @@ export default class PlaylistModal extends Modal {
               this.reload()
             })
         })
-      setting.settingEl.addClass('setting-input-width-80')
+      setting.settingEl.addClass('setting-search-input-width-80')
     })
     new Setting(contentEl).addButton((button) => {
       button.setButtonText('Add Audio File').onClick(() => {
