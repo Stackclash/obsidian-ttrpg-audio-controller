@@ -3,21 +3,9 @@ on:
   pull_request:
     types:
       - opened
-      - edited
       - synchronize
-      - reopened
-
-permissions:
-  pull-requests: write
 
 jobs:
-  pr-checks-and-setup:
-    name: PR Checks and Setup
-    runs-on: ubuntu-latest
-    steps:
-      - uses: amannn/action-semantic-pull-request@v5
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   linting-and-testing:
     name: Linting and Testing
     runs-on: ubuntu-latest

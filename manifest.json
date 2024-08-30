@@ -2,7 +2,7 @@
 	"id": "obsidian-ttrpg-audio-controller",
 	"name": "TTRPG Audio Controller",
 	"version": "0.1.0",
-	"minAppVersion": "0.15.0",
+	"minAppVersion": "1.6.7",
 	"description": "Obsidian plugin to play local audio files",
 	"author": "Richard Cox",
 	"authorUrl": "https://github.com/Stackclash",
