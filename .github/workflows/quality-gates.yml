@@ -2,6 +2,7 @@ name: Pull Request Quality Gates
 on:
   pull_request:
     types:
+      - opened
       - synchronize
 
 jobs:
