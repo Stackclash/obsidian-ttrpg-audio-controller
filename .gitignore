@@ -32,3 +32,6 @@ data.json
 
 # Exclude report files
 reports
+
+# Exclude mkdocs site folder
+docs/site

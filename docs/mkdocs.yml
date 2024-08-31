@@ -1,0 +1,21 @@
+site_name: TTRPG Audio Controller
+site_url: https://stackclash.github.io/obsidian-ttrpg-audio-controller
+repo_url: https://github.com/Stackclash/obsidian-ttrpg-audio-controller
+edit_uri: blob/main/docs/
+remote_branch: gh-pages
+docs_dir: ./pages
+nav:
+  - Introduction: index.md
+  - Installation: installation.md
+  - Settings: settings.md
+  - Usage: usage.md
+  - Contributing: contributing.md
+  - Changelog: changelog.md
+theme:
+  name: material
+  features:
+    - toc.integrate
+plugins:
+  - include-markdown
+markdown_extensions:
+  - admonition
