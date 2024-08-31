@@ -42,16 +42,15 @@ jobs:
     if: ${{ needs.release-please.outputs.pr }}
     needs: release-please
     steps:
-      - uses: actions/checkout@v4
-      - name: Get PR number
-        id: pr
+      - name: Get branch
+        id: branch
         run: |
-          number=$(echo '${{ needs.release-please.outputs.pr }}' | jq -r '.number')
-          echo "pr_number=$number" >> $GITHUB_OUTPUT
-      - name: Checkout PRs
-        run: gh pr checkout ${{ steps.pr.outputs.pr_number }}
-        env:
-          GH_TOKEN: ${{ github.token }}
+          branch=$(echo '${{ needs.release-please.outputs.pr }}' | jq -r '.headBranchName')
+          echo "branch_name=$branch" >> $GITHUB_OUTPUT
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ steps.branch.outputs.branch_name }}
+          fetch-depth: 0
       - name: Check versions.json
         run: |
           # Paths to your JSON files
