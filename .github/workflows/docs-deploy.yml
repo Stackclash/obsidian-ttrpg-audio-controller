@@ -1,6 +1,10 @@
 name: Documentation Deployment 
 on:
   push:
+    paths:
+      - docs/**
+      - CHANGELOG.md
+      - README.md
     branches: 
       - main
 permissions:
