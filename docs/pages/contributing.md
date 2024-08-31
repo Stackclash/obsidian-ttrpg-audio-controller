@@ -1,10 +1,10 @@
 # Contributing Guidelines
 
-Thank you for your interest in contributing to the Obsidian TTRPG Audio Controller project! We welcome contributions from the community to help improve and enhance the plugin. Before you start contributing, please take a moment to review the guidelines below.
+Thank you for your interest in contributing to the Obsidian TTRPG Audio Manager project! We welcome contributions from the community to help improve and enhance the plugin. Before you start contributing, please take a moment to review the guidelines below.
 
 ## Getting Started
 
-To contribute to the Obsidian TTRPG Audio Controller project, follow these steps:
+To contribute to the Obsidian TTRPG Audio Manager project, follow these steps:
 
 1. Fork the repository on GitHub.
 2. Clone the forked repository to your local machine.
@@ -31,14 +31,14 @@ As a rule of thumb separate logic heavy code from code that uses the obsidian ap
 
 ## Reporting Issues
 
-If you encounter any issues or bugs while using the Obsidian TTRPG Audio Controller plugin, please report them on the GitHub issue tracker. Provide detailed information about the problem, including steps to reproduce it and any relevant error messages.
+If you encounter any issues or bugs while using the Obsidian TTRPG Audio Manager plugin, please report them on the GitHub issue tracker. Provide detailed information about the problem, including steps to reproduce it and any relevant error messages.
 
 ## Feature Requests
 
-We welcome feature requests and suggestions for improving the Obsidian TTRPG Audio Controller plugin. Please open an issue on GitHub and describe your idea in detail. We will review it and consider it for future development.
+We welcome feature requests and suggestions for improving the Obsidian TTRPG Audio Manager plugin. Please open an issue on GitHub and describe your idea in detail. We will review it and consider it for future development.
 
 ## License
 
-By contributing to the Obsidian TTRPG Audio Controller project, you agree that your contributions will be licensed under the project's [MIT License](https://opensource.org/licenses/MIT).
+By contributing to the Obsidian TTRPG Audio Manager project, you agree that your contributions will be licensed under the project's [MIT License](https://opensource.org/licenses/MIT).
 
-We appreciate your contributions and look forward to your involvement in making the Obsidian TTRPG Audio Controller plugin even better!
+We appreciate your contributions and look forward to your involvement in making the Obsidian TTRPG Audio Manager plugin even better!

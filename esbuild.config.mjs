@@ -12,7 +12,7 @@ if you want to view the source, please visit the github repository of this plugi
 `
 
 const prod = process.argv[2] === 'production'
-const testVaultPluginPath = './test-vault/.obsidian/plugins/obsidian-ttrpg-audio-controller'
+const testVaultPluginPath = './test-vault/.obsidian/plugins/obsidian-ttrpg-audio-manager'
 
 const context = await esbuild.context({
   banner: {

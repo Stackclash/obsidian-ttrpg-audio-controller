@@ -51,7 +51,7 @@ export default class PlaylistModal extends Modal {
         .setIcon('play')
         .setTooltip('Test Scene')
         .onClick(() => {
-          this.app.workspace.trigger('obsidian-ttrpg-audio-controller:play-scene', this.settings)
+          this.app.workspace.trigger('obsidian-ttrpg-audio-manager:play-scene', this.settings)
         })
       if (this.settings.audioSettings.length === 0) {
         button.setDisabled(true)

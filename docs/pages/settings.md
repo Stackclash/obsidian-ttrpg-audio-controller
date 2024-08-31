@@ -8,7 +8,7 @@ The Audio Folders setting allows you to add multiple folders that hold your audi
 
 To add an audio folder, follow these steps:
 
-1. In the TTRPG Audio Controller Plugin settings tab find the section titled "Audio Folders".
+1. In the TTRPG Audio Manager Plugin settings tab find the section titled "Audio Folders".
 2. Click the `Add new audio folder` button.
 3. In the text input start typing the path of the folder. (Autocomplete will help to find the folder you're looking for)
 
@@ -20,7 +20,7 @@ Note: Make sure to organize your audio files into separate folders based on your
 
 The Playlist Settings allow you to create and customize playlists for your audio files. Follow these steps to add a new playlist:
 
-1. In the TTRPG Audio Controller Plugin settings tab, locate the section titled "Playlists".
+1. In the TTRPG Audio Manager Plugin settings tab, locate the section titled "Playlists".
 2. Click the "Add new playlist" button.
 3. In the text input that appears, enter a name for the playlist.
 
@@ -40,11 +40,11 @@ By utilizing the playlist settings, you can create customized audio playlists fo
 
 ## Scene Settings
 
-Scenes in the TTRPG Audio Controller Plugin allow you to create collections of audio files that can be played together. This feature enhances the immersive experience by providing a seamless audio backdrop for your TTRPG sessions.
+Scenes in the TTRPG Audio Manager Plugin allow you to create collections of audio files that can be played together. This feature enhances the immersive experience by providing a seamless audio backdrop for your TTRPG sessions.
 
 To add a new scene, follow these steps:
 
-1. In the TTRPG Audio Controller Plugin settings tab, locate the section titled "Scenes".
+1. In the TTRPG Audio Manager Plugin settings tab, locate the section titled "Scenes".
 2. Click the "Add new scene" button.
 3. In the text input that appears, enter a name for the scene.
 
