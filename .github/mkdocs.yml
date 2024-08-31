@@ -1,8 +1,0 @@
-site_name: TTRPG Audio Controller
-site_url: https://mydomain.org/mysite
-repo_url: https://github.com/Stackclash/obsidian-ttrpg-audio-controller
-edit_uri: blob/main/docs/
-remote_branch: gh-pages
-docs_dir: ../docs
-theme:
-  name: material
