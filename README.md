@@ -1,6 +1,6 @@
-# TTRPG Audio Controller for Obsidian
+# TTRPG Audio Manager for Obsidian
 
-**TTRPG Audio Controller** is a plugin for [Obsidian](https://obsidian.md/) that allows you to manage and play local audio files to enhance your tabletop role-playing games (TTRPGs). Whether you need to create immersive ambiances, set the mood with background music, or organize your audio files into themed playlists, this plugin has you covered.
+**TTRPG Audio Manager** is a plugin for [Obsidian](https://obsidian.md/) that allows you to manage and play local audio files to enhance your tabletop role-playing games (TTRPGs). Whether you need to create immersive ambiances, set the mood with background music, or organize your audio files into themed playlists, this plugin has you covered.
 
 ## Features
 
@@ -10,10 +10,10 @@
 - **Customizable Playback Settings:** Adjust volume, looping, and other playback settings for individual tracks or entire playlists/scenes.
 
 ## Documentation
-Visit our documentation [here](https://stackclash.github.io/obsidian-ttrpg-audio-controller/).
+Visit our documentation [here](https://stackclash.github.io/obsidian-ttrpg-audio-manager/).
 
-- [Installation](https://stackclash.github.io/obsidian-ttrpg-audio-controller/installation)
-- [Settings](https://stackclash.github.io/obsidian-ttrpg-audio-controller/settings)
-- [Usage](https://stackclash.github.io/obsidian-ttrpg-audio-controller/usage)
-- [Contributing](https://stackclash.github.io/obsidian-ttrpg-audio-controller/contributing)
-- [Changelog](https://stackclash.github.io/obsidian-ttrpg-audio-controller/changelog)
+- [Installation](https://stackclash.github.io/obsidian-ttrpg-audio-manager/installation)
+- [Settings](https://stackclash.github.io/obsidian-ttrpg-audio-manager/settings)
+- [Usage](https://stackclash.github.io/obsidian-ttrpg-audio-manager/usage)
+- [Contributing](https://stackclash.github.io/obsidian-ttrpg-audio-manager/contributing)
+- [Changelog](https://stackclash.github.io/obsidian-ttrpg-audio-manager/changelog)

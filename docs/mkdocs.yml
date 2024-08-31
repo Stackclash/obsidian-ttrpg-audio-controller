@@ -1,6 +1,6 @@
-site_name: TTRPG Audio Controller
-site_url: https://stackclash.github.io/obsidian-ttrpg-audio-controller
-repo_url: https://github.com/Stackclash/obsidian-ttrpg-audio-controller
+site_name: TTRPG Audio Manager
+site_url: https://stackclash.github.io/obsidian-ttrpg-audio-manager
+repo_url: https://github.com/Stackclash/obsidian-ttrpg-audio-manager
 edit_uri: blob/main/docs/
 remote_branch: gh-pages
 docs_dir: ./pages

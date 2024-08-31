@@ -21,7 +21,7 @@ export interface SceneSettings {
   audioSettings: SceneAudioSettings[]
 }
 
-export interface TtrpgAudioControllerSettings {
+export interface TtrpgAudioManagerSettings {
   audioFolders: AudioFolderSettings[]
   playlists: PlaylistSettings[]
   scenes: SceneSettings[]

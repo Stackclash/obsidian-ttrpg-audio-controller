@@ -14,6 +14,6 @@ Follow these steps to install the plugin using BRAT:
 
 1. Launch Obsidian and open your vault.
 2. Navigate to the BRAT settings and click `Add Beta Plugin`
-3. In the input that appears paste `https://github.com/Stackclash/obsidian-ttrpg-audio-controller` and click `Add Plugin`.
+3. In the input that appears paste `https://github.com/Stackclash/obsidian-ttrpg-audio-manager` and click `Add Plugin`.
 
 Congratulations! You have successfully installed the Obsidian plugin using BRAT. Enjoy using the plugin and explore its functionalities to enhance your Obsidian experience.

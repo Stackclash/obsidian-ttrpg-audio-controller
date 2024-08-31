@@ -1,17 +1,17 @@
 import { App, PluginSettingTab, Setting } from 'obsidian'
-import TtrpgAudioControllerPlugin from './main'
+import TtrpgAudioManagerPlugin from './main'
 import PlaylistModal from './modals/PlaylistModal'
 import SceneModal from './modals/SceneModal'
 import { AudioFolderSuggester } from './suggesters/AudioFolderSuggester'
 
-export class TtrpgAudioControllerSettingTab extends PluginSettingTab {
-  plugin: TtrpgAudioControllerPlugin
+export class TtrpgAudioManagerSettingTab extends PluginSettingTab {
+  plugin: TtrpgAudioManagerPlugin
 
   playlistSettingModal: PlaylistModal
 
   scenesSettingModal: SceneModal
 
-  constructor(app: App, plugin: TtrpgAudioControllerPlugin) {
+  constructor(app: App, plugin: TtrpgAudioManagerPlugin) {
     super(app, plugin)
     this.plugin = plugin
     this.playlistSettingModal = new PlaylistModal(this.app)

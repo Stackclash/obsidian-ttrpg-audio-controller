@@ -1,5 +1,5 @@
 {
-  "name": "obsidian-ttrpg-audio-controller",
+  "name": "obsidian-ttrpg-audio-manager",
   "version": "0.1.0",
   "description": "Plugin to play local audio files",
   "main": "main.js",
