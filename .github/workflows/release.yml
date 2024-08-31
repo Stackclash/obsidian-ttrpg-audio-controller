@@ -12,24 +12,65 @@ name: Release
 jobs:
   release-please:
     runs-on: ubuntu-latest
+    outputs:
+      release_created: ${{ steps.release.outputs.release_created }}
+      tag_name: ${{ steps.release.outputs.tag_name }}
+      pr: ${{ steps.release.outputs.pr }}
     steps:
       - uses: googleapis/release-please-action@v4
         id: release
         with:
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
+  release-files:
+    runs-on: ubuntu-latest
+    if: ${{ needs.release-please.outputs.release_created }}
+    needs: release-please
+    steps:  
       - uses: actions/checkout@v3
-        if: ${{ steps.release.outputs.release_created }}
       - uses: actions/setup-node@v3
-        if: ${{ steps.release.outputs.release_created }}
         with:
           node-version: 22
       - run: npm install
-        if: ${{ steps.release.outputs.release_created }}
       - run: npm run build
-        if: ${{ steps.release.outputs.release_created }}
       - name: Upload Release Artifacts
-        if: ${{ steps.release.outputs.release_created }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh release upload ${{ steps.release.outputs.tag_name }} ./main.js ./manifest.json ./styles.css
+        run: gh release upload ${{ needs.release-please.outputs.tag_name }} ./main.js ./manifest.json ./styles.css
+  release-pr-versions-file:
+    runs-on: ubuntu-latest
+    if: ${{ needs.release-please.outputs.pr }}
+    needs: release-please
+    steps:
+      - uses: actions/checkout@v3
+      - name: Get PR number
+        id: pr
+        run: |
+          number=$(echo '${{ needs.release-please.outputs.pr }}' | jq -r '.number')
+          echo "pr_number=$number" >> $GITHUB_OUTPUT
+      - name: Checkout PRs
+        run: gh pr checkout ${{ steps.pr.outputs.pr_number }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+      - name: Check versions.json
+        run: |
+          # Paths to your JSON files
+          MANIFEST_FILE="manifest.json"
+          VERSIONS_FILE="versions.json"
+
+          # Extract the minAppVersion and version from manifest.json
+          minAppVersion=$(jq -r '.minAppVersion' "$MANIFEST_FILE")
+          version=$(jq -r '.version' "$MANIFEST_FILE")
+
+          # Update versions.json with the new minAppVersion and version
+          updated_json=$(jq --arg version "$version" --arg minAppVersion "$minAppVersion" '. + {($version): $minAppVersion}' "$VERSIONS_FILE")
+
+          # Write the updated JSON back to versions.json
+          echo "$updated_json" > "$VERSIONS_FILE"
+
+          echo "Updated versions.json with version: $version and minAppVersion: $minAppVersion"
+      - name: Commit and push changes
+        uses: devops-infra/action-commit-push@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          commit_message: Updating versions.json
