@@ -17,3 +17,5 @@ theme:
     - toc.integrate
 plugins:
   - include-markdown
+markdown_extensions:
+  - admonition
