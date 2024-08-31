@@ -19,7 +19,7 @@ styles.css
 !test-vault/.obsidian/plugins/hot-reload/main.js
 
 # exclude manifest.json in test-vault
-test-vault/.obsidian/plugins/obsidian-ttrpg-audio-controller/manifest.json
+test-vault/.obsidian/plugins/obsidian-ttrpg-audio-manager/manifest.json
 
 # Exclude sourcemaps
 *.map
@@ -32,3 +32,6 @@ data.json
 
 # Exclude report files
 reports
+
+# Exclude mkdocs site folder
+docs/site
