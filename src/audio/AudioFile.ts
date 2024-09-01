@@ -5,11 +5,18 @@ export default class AudioFile {
   state: 'playing' | 'paused' | 'stopped' = 'stopped'
   audioEl: HTMLAudioElement
 
-  constructor(tfile: TFile) {
-    this.tfile = tfile
+  constructor(audioPath: string, volume: number = .5, loop: boolean = false) {
+    const tfile = TFile.vault.getFileByPath(audioPath)
+    if (tfile) { 
+      this.tfile = tfile
+    } else {
+      throw new Error('file does not exist')
+    }  
 
     const audioElement = document.createElement('audio')
     audioElement.src = this.tfile.vault.getResourcePath(this.tfile)
+    audioElement.volume = volume
+    audioElement.loop = loop
 
     this.audioEl = audioElement
   }
