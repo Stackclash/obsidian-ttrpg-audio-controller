@@ -1,17 +1,17 @@
-import { TFile } from 'obsidian'
+import { App, TFile } from 'obsidian'
 
 export default class AudioFile {
   tfile: TFile
   state: 'playing' | 'paused' | 'stopped' = 'stopped'
   audioEl: HTMLAudioElement
 
-  constructor(audioPath: string, volume: number = .5, loop: boolean = false) {
-    const tfile = TFile.vault.getFileByPath(audioPath)
-    if (tfile) { 
+  constructor(app: App, audioPath: string, volume: number = 0.5, loop: boolean = false) {
+    const tfile = app.vault.getFileByPath(audioPath)
+    if (tfile) {
       this.tfile = tfile
     } else {
       throw new Error('file does not exist')
-    }  
+    }
 
     const audioElement = document.createElement('audio')
     audioElement.src = this.tfile.vault.getResourcePath(this.tfile)

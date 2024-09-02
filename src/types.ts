@@ -11,7 +11,7 @@ export interface PlaylistSettings {
   audioPaths: string[]
 }
 
-interface SceneAudioSettings {
+export interface SceneAudioSettings {
   audioPath: string
   volume: number
 }

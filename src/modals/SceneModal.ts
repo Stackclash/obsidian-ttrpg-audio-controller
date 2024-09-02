@@ -1,4 +1,5 @@
 import { App, Events, Modal, Setting } from 'obsidian'
+import AudioScene from 'src/audio/AudioScene'
 import { AudioFileSuggester } from 'src/suggesters/AudioFileSuggester'
 import { SceneSettings } from 'src/types'
 
@@ -51,7 +52,8 @@ export default class PlaylistModal extends Modal {
         .setIcon('play')
         .setTooltip('Test Scene')
         .onClick(() => {
-          this.app.workspace.trigger('obsidian-ttrpg-audio-manager:play-scene', this.settings)
+          const scene = new AudioScene(this.app, this.settings.name, this.settings.audioSettings)
+          scene.play()
         })
       if (this.settings.audioSettings.length === 0) {
         button.setDisabled(true)
