@@ -24,15 +24,31 @@ export default class AudioPlaylist {
         return 'stopped'
     }
     
+    getCurrentAudio(): number | null {
+        this.audioFiles.forEach((audioFile, index) => {
+            if (audioFile.state !== 'stopped') return index
+        })
+        
+        return null
+    }
+    
     play(): void {
-      
+        if (this.state === 'paused') {
+            this.audioFiles[this.getCurrentAudio()].play()
+        } else if (this.state === 'stopped') {
+            this.audioFiles[0].play()
+        } 
     }
 
     pause(): void {
-      
+        this.audioFiles.forEach(audioFile => {
+            if (audioFile.state === 'playing') audioFile.pause()
+        })
     }
 
     stop(): void {
-      
+        this.audioFiles.forEach(audioFile => {
+            if (audioFile.state === 'playing') audioFile.stop()
+        })
     }
 } 

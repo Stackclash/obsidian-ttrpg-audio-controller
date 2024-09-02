@@ -12,20 +12,32 @@ export default class AudioScene {
         })
     }
     
-    // Maybe also pass back what file currently on
     get state(): string {
-        
+        const state = this.audioFiles[0].state
+        return this.audioFiles.every(audioFile => state === audioFile.state) ? state : ''
     }
     
     play(): void {
-      
+        if (this.state !== 'playing') {
+            this.audioFiles.forEach(audioFile => {
+                audioFile.play()
+            })
+        } 
     }
 
     pause(): void {
-      
+        if (this.state === 'playing') {
+            this.audioFiles.forEach(audioFile => {
+                audioFile.play()
+            })
+        }
     }
 
     stop(): void {
-      
+        if (this.state === 'playing') {
+            this.audioFiles.forEach(audioFile => {
+                audioFile.play()
+            })
+        }
     }
 } 
