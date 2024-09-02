@@ -67,10 +67,10 @@ export class TtrpgAudioManagerSettingTab extends PluginSettingTab {
       new Setting(this.containerEl).setName('Volume').addSlider(slider => {
         slider
           .setLimits(0, 100, 1)
-          .setValue(audioFolderSetting.volume)
+          .setValue(audioFolderSetting.volume * 100)
           .setDynamicTooltip()
           .onChange(value => {
-            this.plugin.settings.audioFolders[index].volume = value
+            this.plugin.settings.audioFolders[index].volume = value / 100
             this.plugin.saveSettings()
           })
       })
@@ -93,7 +93,7 @@ export class TtrpgAudioManagerSettingTab extends PluginSettingTab {
         .onClick(() => {
           this.plugin.settings.audioFolders.push({
             folderPath: '',
-            volume: 100,
+            volume: 1,
             loop: false,
           })
           this.plugin.saveSettings()
@@ -157,7 +157,7 @@ export class TtrpgAudioManagerSettingTab extends PluginSettingTab {
         .onClick(() => {
           this.plugin.settings.playlists.push({
             name: '',
-            volume: 50,
+            volume: 0.5,
             loop: false,
             audioPaths: [],
           })

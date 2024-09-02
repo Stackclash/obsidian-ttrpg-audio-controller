@@ -73,9 +73,9 @@ export default class PlaylistModal extends Modal {
           slider
             .setLimits(0, 100, 1)
             .setDynamicTooltip()
-            .setValue(audioSetting.volume)
+            .setValue(audioSetting.volume * 100)
             .onChange(value => {
-              this.settings.audioSettings[index].volume = value
+              this.settings.audioSettings[index].volume = value / 100
             })
         })
         .addExtraButton(button => {
@@ -95,7 +95,7 @@ export default class PlaylistModal extends Modal {
       button.setButtonText('Add Audio File').onClick(() => {
         this.settings.audioSettings.push({
           audioPath: '',
-          volume: 50,
+          volume: 0.5,
         })
         this.reload()
       })

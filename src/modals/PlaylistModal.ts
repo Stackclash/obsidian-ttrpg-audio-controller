@@ -42,9 +42,9 @@ export default class PlaylistModal extends Modal {
       slider
         .setLimits(0, 100, 1)
         .setDynamicTooltip()
-        .setValue(this.settings.volume)
+        .setValue(this.settings.volume * 100)
         .onChange(value => {
-          this.settings.volume = value
+          this.settings.volume = value / 100
         })
     })
 
