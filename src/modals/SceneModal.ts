@@ -5,8 +5,9 @@ import { SceneSettings } from 'src/types'
 
 export default class PlaylistModal extends Modal {
   settings: SceneSettings
-  events: Events
   settingIndex: number
+  events: Events
+  testScene: AudioScene
 
   constructor(app: App) {
     super(app)
@@ -48,13 +49,22 @@ export default class PlaylistModal extends Modal {
     new Setting(contentEl).setDesc(desc)
 
     new Setting(contentEl).addButton(button => {
-      button
-        .setIcon('play')
-        .setTooltip('Test Scene')
-        .onClick(() => {
-          const scene = new AudioScene(this.app, this.settings.name, this.settings.audioSettings)
-          scene.play()
-        })
+      button.setTooltip('Test Scene').onClick(() => {
+        if (!this.testScene) {
+          this.testScene = new AudioScene(this.app, this.settings.name, this.settings.audioSettings)
+        }
+        if (this.testScene.state === 'playing') {
+          this.testScene.stop()
+        } else {
+          this.testScene.play()
+        }
+        this.reload()
+      })
+      if (!this.testScene || this.testScene.state === 'stopped') {
+        button.setIcon('play')
+      } else {
+        button.setIcon('stop')
+      }
       if (this.settings.audioSettings.length === 0) {
         button.setDisabled(true)
       }
