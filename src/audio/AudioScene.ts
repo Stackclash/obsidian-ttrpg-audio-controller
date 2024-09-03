@@ -29,7 +29,7 @@ export default class AudioScene {
   pause(): void {
     if (this.state === 'playing') {
       this.audioFiles.forEach(audioFile => {
-        audioFile.play()
+        audioFile.pause()
       })
     }
   }
@@ -37,7 +37,7 @@ export default class AudioScene {
   stop(): void {
     if (this.state === 'playing') {
       this.audioFiles.forEach(audioFile => {
-        audioFile.play()
+        audioFile.stop()
       })
     }
   }

@@ -60,10 +60,10 @@ export default class PlaylistModal extends Modal {
         }
         this.reload()
       })
-      if (!this.testScene || this.testScene.state === 'stopped') {
+      if (!this.testScene || this.testScene.state !== 'playing') {
         button.setIcon('play')
       } else {
-        button.setIcon('stop')
+        button.setIcon('square')
       }
       if (this.settings.audioSettings.length === 0) {
         button.setDisabled(true)
