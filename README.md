@@ -1,5 +1,8 @@
 # TTRPG Audio Manager for Obsidian
 
+> [!WARNING]
+> This plugin is still in development and not ready for use.
+
 **TTRPG Audio Manager** is a plugin for [Obsidian](https://obsidian.md/) that allows you to manage and play local audio files to enhance your tabletop role-playing games (TTRPGs). Whether you need to create immersive ambiances, set the mood with background music, or organize your audio files into themed playlists, this plugin has you covered.
 
 ## Features
