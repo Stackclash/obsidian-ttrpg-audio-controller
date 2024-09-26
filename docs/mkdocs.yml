@@ -18,4 +18,4 @@ theme:
 plugins:
   - include-markdown
 markdown_extensions:
-  - callouts
+  - github-callouts
